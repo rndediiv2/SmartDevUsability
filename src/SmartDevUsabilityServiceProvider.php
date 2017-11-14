@@ -24,8 +24,9 @@ class SmartDevUsabilityServiceProvider extends ServiceProvider
      */
      public function register()
      {
-         $this->app-bind('SmartDevUsability', function($app){
-             return new SmartDevUsability;
-         });
+        $this->app->singleton(SmartDevUsability::class, function () {
+            return new SmartDevUsability();
+        });
+        $this->app->alias(SmartDevUsability::class, 'SmartDevUsability');
      }
 }
